@@ -7,6 +7,7 @@ public class KeyInput : MonoBehaviour
     public KeyCode key;          
     private Renderer rend;
     private Color firstColour;
+    public AudioSource audioSource;
 
     void Start()
     {
@@ -18,6 +19,7 @@ public class KeyInput : MonoBehaviour
     {
         if (Input.GetKeyDown(key))
         {
+            
             StartCoroutine(FlashRed());
         }
     }
@@ -25,6 +27,7 @@ public class KeyInput : MonoBehaviour
     IEnumerator FlashRed()
     {
         rend.material.color = Color.red;
+        audioSource.Play();
 
         yield return new WaitForSeconds(0.2f);
 
