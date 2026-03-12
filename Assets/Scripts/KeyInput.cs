@@ -19,11 +19,19 @@ public class KeyInput : MonoBehaviour
 
         if (Input.GetKey(key))
         {
+           
             currentIndex = 1;
             Debug.Log("Pressed");
+            
         }
         else currentIndex = 0;
         
         this.GetComponent<SpriteRenderer>().sprite = currentSprite;
+
+        if (Input.GetKeyDown(key))
+        {
+            audioSource.Play();
+        }
     }
+
 }

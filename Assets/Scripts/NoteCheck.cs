@@ -42,6 +42,7 @@ public class NoteCheck : MonoBehaviour
         if (pressedKeys.Count == requiredKeys.Length)
         {
             Debug.Log("Chord Completed!");
+            pressedKeys.Clear();
             Destroy(gameObject);
         }
     }
