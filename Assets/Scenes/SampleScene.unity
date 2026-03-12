@@ -155,6 +155,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 106
   audioSource: {fileID: 63029712}
+  rendererPool:
+  - {fileID: 21300000, guid: 48cc1757a0630bd4bb3d1e95dbf4c8ad, type: 3}
+  - {fileID: 21300000, guid: 7c72197496e0b1e41a5f689d65ec6ec1, type: 3}
+  currentSprite: {fileID: 0}
 --- !u!212 &63029710
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -196,7 +200,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: e4d5273cd145e384b80273f71f89513b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 48cc1757a0630bd4bb3d1e95dbf4c8ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -216,7 +220,7 @@ Transform:
   m_GameObject: {fileID: 63029708}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.05, y: -3.41, z: 0}
+  m_LocalPosition: {x: 2.6, y: -3.41, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -611,6 +615,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 104
   audioSource: {fileID: 699291387}
+  rendererPool:
+  - {fileID: 21300000, guid: 1ebd361fe516f594dbeff24a973110e7, type: 3}
+  - {fileID: 21300000, guid: ed90518d42ae9114596ca09a7886ed98, type: 3}
+  currentSprite: {fileID: 0}
 --- !u!212 &699291385
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -652,7 +660,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a12fedb48f334a242a6d7badaa56c47e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ebd361fe516f594dbeff24a973110e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -672,7 +680,7 @@ Transform:
   m_GameObject: {fileID: 699291383}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.050000012, y: -3.41, z: 0}
+  m_LocalPosition: {x: 1.5, y: -3.41, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -807,6 +815,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 107
   audioSource: {fileID: 1076304908}
+  rendererPool:
+  - {fileID: 21300000, guid: e6242d4b102470f4996c3609a849ad73, type: 3}
+  - {fileID: 21300000, guid: a86c932a052d91943912f9ff9a1cb0b3, type: 3}
+  currentSprite: {fileID: 0}
 --- !u!212 &1076304906
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -848,7 +860,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 978185b716f210e45ae6d12198c344c4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6242d4b102470f4996c3609a849ad73, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -868,7 +880,7 @@ Transform:
   m_GameObject: {fileID: 1076304904}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.050000012, y: -3.41, z: 0}
+  m_LocalPosition: {x: 3.7, y: -3.41, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1101,6 +1113,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 100
   audioSource: {fileID: 1133570130}
+  rendererPool:
+  - {fileID: 21300000, guid: b25138bb79ca4ca409f9958afd2420f0, type: 3}
+  - {fileID: 21300000, guid: 78520fd4af8e5a94aa3754a403d34636, type: 3}
+  currentSprite: {fileID: 0}
 --- !u!212 &1133570128
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1142,7 +1158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 24ff64e56c778424da4f023269ae4fa0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b25138bb79ca4ca409f9958afd2420f0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1162,7 +1178,7 @@ Transform:
   m_GameObject: {fileID: 1133570126}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.050000012, y: -3.41, z: 0}
+  m_LocalPosition: {x: -1.8, y: -3.41, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1276,6 +1292,7 @@ GameObject:
   - component: {fileID: 1575209174}
   - component: {fileID: 1575209173}
   - component: {fileID: 1575209176}
+  - component: {fileID: 1575209177}
   m_Layer: 0
   m_Name: Keynote D
   m_TagString: Untagged
@@ -1297,6 +1314,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 115
   audioSource: {fileID: 1575209176}
+  rendererPool:
+  - {fileID: 21300000, guid: 7841cb556969e9542a9d1d1b7a65fd77, type: 3}
+  - {fileID: 21300000, guid: 2f88e60eaafe48345813dc42b81b23f9, type: 3}
+  currentSprite: {fileID: 0}
 --- !u!212 &1575209174
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1338,7 +1359,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c6bf2c70b026b264e949f4398cfb2041, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7841cb556969e9542a9d1d1b7a65fd77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1358,7 +1379,7 @@ Transform:
   m_GameObject: {fileID: 1575209172}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.050000012, y: -3.41, z: 0}
+  m_LocalPosition: {x: -2.9, y: -3.41, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1460,6 +1481,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1575209177
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575209172}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4de0735a13ef1254f84f1974ed31b5af, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1627024078
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,6 +1514,7 @@ GameObject:
   - component: {fileID: 1627024080}
   - component: {fileID: 1627024079}
   - component: {fileID: 1627024082}
+  - component: {fileID: 1627024083}
   m_Layer: 0
   m_Name: Keynote C
   m_TagString: Untagged
@@ -1493,6 +1536,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 97
   audioSource: {fileID: 1627024082}
+  rendererPool:
+  - {fileID: 21300000, guid: ad132fa01fa3e784294a8d0167fd68b0, type: 3}
+  - {fileID: 21300000, guid: d22194842d9ff9340a94af47f3ef3c44, type: 3}
+  currentSprite: {fileID: 0}
 --- !u!212 &1627024080
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1534,7 +1581,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 533a827b27d8211479196c14bbf59699, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad132fa01fa3e784294a8d0167fd68b0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1554,7 +1601,7 @@ Transform:
   m_GameObject: {fileID: 1627024078}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07999998, y: -3.41, z: 0}
+  m_LocalPosition: {x: -4, y: -3.41, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1656,6 +1703,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &1627024083
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627024078}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7b4752b8a425e6d43b2380ecf914ba45, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1840777492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1689,6 +1757,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 103
   audioSource: {fileID: 1840777496}
+  rendererPool:
+  - {fileID: 21300000, guid: 34501de8490081a41b49778490ba602c, type: 3}
+  - {fileID: 21300000, guid: 0a47c6fa54676dd4bbf6cfb71acbac4d, type: 3}
+  currentSprite: {fileID: 0}
 --- !u!212 &1840777494
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1730,7 +1802,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 5d6c771b88179834ba96468f867dfe90, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 34501de8490081a41b49778490ba602c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1750,7 +1822,7 @@ Transform:
   m_GameObject: {fileID: 1840777492}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.050000012, y: -3.41, z: 0}
+  m_LocalPosition: {x: 0.4, y: -3.41, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1885,6 +1957,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: 102
   audioSource: {fileID: 2117270093}
+  rendererPool:
+  - {fileID: 21300000, guid: 775abad4f62ee9c4aa7f1ece048f353c, type: 3}
+  - {fileID: 21300000, guid: bb7d27576a4298c43bcd27f96b9704f5, type: 3}
+  currentSprite: {fileID: 0}
 --- !u!212 &2117270091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1926,7 +2002,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 04d1dff72820ac3468352cee5d921391, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 775abad4f62ee9c4aa7f1ece048f353c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1946,7 +2022,7 @@ Transform:
   m_GameObject: {fileID: 2117270089}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.050000012, y: -3.41, z: 0}
+  m_LocalPosition: {x: -0.7, y: -3.41, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

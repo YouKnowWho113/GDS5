@@ -8,29 +8,22 @@ public class KeyInput : MonoBehaviour
     private Renderer rend;
     private Color firstColour;
     public AudioSource audioSource;
+    public Sprite[] rendererPool;
+    public Sprite currentSprite;
 
-    void Start()
-    {
-        rend = GetComponent<Renderer>();
-        firstColour = rend.material.color;
-    }
+    int currentIndex = 0;
 
     void Update()
     {
-        if (Input.GetKeyDown(key))
+        currentSprite = rendererPool[currentIndex];
+
+        if (Input.GetKey(key))
         {
-            
-            StartCoroutine(FlashRed());
+            currentIndex = 1;
+            Debug.Log("Pressed");
         }
-    }
-
-    IEnumerator FlashRed()
-    {
-        rend.material.color = Color.red;
-        audioSource.Play();
-
-        yield return new WaitForSeconds(0.2f);
-
-        rend.material.color = firstColour;
+        else currentIndex = 0;
+        
+        this.GetComponent<SpriteRenderer>().sprite = currentSprite;
     }
 }
