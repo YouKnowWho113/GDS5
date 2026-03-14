@@ -5,33 +5,26 @@ using UnityEngine;
 public class NoteCheck : MonoBehaviour
 {
     public KeyCode[] requiredKeys;   
-    private HashSet<KeyCode> pressedKeys = new HashSet<KeyCode>();
+
+    int currentIndex = 0;
 
     void Update()
     {
         if (Input.anyKeyDown)
         {
-            bool correctKeyPressed = false;
+            KeyCode expectedKey = requiredKeys[currentIndex];
 
-            foreach (KeyCode key in requiredKeys)
+            
+            if (Input.GetKeyDown(expectedKey))
             {
-                if (Input.GetKeyDown(key))
-                {
-                    correctKeyPressed = true;
+                Debug.Log("Correct: " + expectedKey);
+                currentIndex++;
 
-                    if (!pressedKeys.Contains(key))
-                    {
-                        pressedKeys.Add(key);
-                        Debug.Log("Correct: " + key);
-                    }
-
-                    CheckCompletion();
-                }
+                CheckCompletion();
             }
-
-         
-            if (!correctKeyPressed)
+            else
             {
+                
                 FailSequence();
             }
         }
@@ -39,17 +32,16 @@ public class NoteCheck : MonoBehaviour
 
     void CheckCompletion()
     {
-        if (pressedKeys.Count == requiredKeys.Length)
+        if (currentIndex >= requiredKeys.Length)
         {
-            Debug.Log("Chord Completed!");
-            pressedKeys.Clear();
+            Debug.Log("Completed!");
             Destroy(gameObject);
         }
     }
 
     void FailSequence()
     {
-        Debug.Log("Wrong key! Resetting input.");
-        pressedKeys.Clear();
+        Debug.Log("Wrong key!");
+        currentIndex = 0;
     }
 }

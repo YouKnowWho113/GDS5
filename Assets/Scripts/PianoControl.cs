@@ -7,6 +7,7 @@ public class PianoControl : MonoBehaviour
     public ChangeCamera camera;
     public GameObject piano1;
     public GameObject piano2;
+    public GameObject pianoControl;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class PianoControl : MonoBehaviour
         {
             Destroy(piano1);
             piano2.SetActive(true);
+            Destroy(pianoControl, 0.5f);
         }
     }
 }

@@ -7,6 +7,7 @@ public class ChangeCamera : MonoBehaviour
     public GameObject camera1;
     public GameObject camera2;
     public bool Checked = false;
+    public GameObject cameraControl;
     void Start()
     {
         
@@ -26,12 +27,9 @@ public class ChangeCamera : MonoBehaviour
         {
             Destroy(camera1);
             camera2.SetActive(true);
+            Destroy(cameraControl, 0.5f);
         }
-        else
-        {
-            camera1.SetActive(true);
-            camera2.SetActive(false);
-        }
+       
         
 
     }
