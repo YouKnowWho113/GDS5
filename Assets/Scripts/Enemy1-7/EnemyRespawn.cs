@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyRespawn : MonoBehaviour
 {
     private Vector3 startPosition;
+    public NoteUIController ui;
 
     void Start()
     {
@@ -16,6 +17,7 @@ public class EnemyRespawn : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Respawn();
+            ui.OnFail();
         }
     }
 
