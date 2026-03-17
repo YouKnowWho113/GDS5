@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class NoteCheck : MonoBehaviour
 {
-    public KeyCode[] requiredKeys;   
+    public KeyCode[] requiredKeys;
+    public bool destroyed;
 
     int currentIndex = 0;
+    public EnemyManager manager;
+
+    public NoteUIController ui;
 
     void Update()
     {
@@ -19,6 +23,7 @@ public class NoteCheck : MonoBehaviour
             {
                 Debug.Log("Correct: " + expectedKey);
                 currentIndex++;
+                ui.OnCorrectInput();
 
                 CheckCompletion();
             }
@@ -34,6 +39,7 @@ public class NoteCheck : MonoBehaviour
     {
         if (currentIndex >= requiredKeys.Length)
         {
+            manager.OnObstacleCleared();
             Debug.Log("Completed!");
             Destroy(gameObject);
         }
@@ -42,6 +48,7 @@ public class NoteCheck : MonoBehaviour
     void FailSequence()
     {
         Debug.Log("Wrong key!");
+        ui.OnFail();
         currentIndex = 0;
     }
 }
