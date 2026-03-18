@@ -22,6 +22,7 @@ public class MultiPhaseEnemy : MonoBehaviour
     Vector3 targetPosition;
     [Header("Movement")]
     public float moveSpeed = 2f;
+    public EnemyManager manager;
 
     void Start()
     {
@@ -92,7 +93,9 @@ public class MultiPhaseEnemy : MonoBehaviour
             }
             else
             {
+                manager.OnObstacleCleared();
                 Destroy(gameObject);
+
             }
         }
     }
@@ -126,7 +129,7 @@ public class MultiPhaseEnemy : MonoBehaviour
             if (i < count)
             {
                 ui.noteImages[i].gameObject.SetActive(true);
-                ui.noteImages[i].transform.localScale = new Vector3(2f, 5.5f, 1f);
+                ui.noteImages[i].transform.localScale = new Vector3(1.8f, 5f, 1f);
                 
 
                 Sprite s = ui.GetSpriteFromKey(currentKeys[i]);

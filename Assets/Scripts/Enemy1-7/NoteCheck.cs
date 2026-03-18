@@ -6,10 +6,9 @@ public class NoteCheck : MonoBehaviour
 {
     public KeyCode[] requiredKeys;
     public bool destroyed;
-
+    bool completed = false;
     int currentIndex = 0;
     public EnemyManager manager;
-
     public NoteUIController ui;
 
     void Update()
@@ -18,10 +17,10 @@ public class NoteCheck : MonoBehaviour
         {
             KeyCode expectedKey = requiredKeys[currentIndex];
 
-            
             if (Input.GetKeyDown(expectedKey))
             {
                 Debug.Log("Correct: " + expectedKey);
+
                 currentIndex++;
                 ui.OnCorrectInput();
 
@@ -29,7 +28,6 @@ public class NoteCheck : MonoBehaviour
             }
             else
             {
-                
                 FailSequence();
             }
         }

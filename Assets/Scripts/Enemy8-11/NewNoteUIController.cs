@@ -7,12 +7,11 @@ public class NewNoteUIController : MonoBehaviour
 {
     public Image[] noteImages;
 
-    int currentIndex = 0;
+    public int currentIndex = 0;
 
 
 
-    Vector3 defaultScale = new Vector3(2f, 5.5f, 1f);
-
+    [SerializeField] Vector3 defaultScale = new Vector3(1.8f, 5f, 1f);
 
     public Sprite spriteA;
     public Sprite spriteS;
@@ -36,12 +35,14 @@ public class NewNoteUIController : MonoBehaviour
 
     public void OnFail()
     {
+        StopAllCoroutines(); 
+
         currentIndex = 0;
 
         for (int i = 0; i < noteImages.Length; i++)
         {
             noteImages[i].gameObject.SetActive(true);
-            noteImages[i].transform.localScale = new Vector3(2f, 5.5f, 1f);
+            noteImages[i].transform.localScale = defaultScale;
         }
     }
 
@@ -84,14 +85,16 @@ public class NewNoteUIController : MonoBehaviour
 
     public void ResetUI()
     {
-        StopAllCoroutines(); // ✅ VERY IMPORTANT
+        StopAllCoroutines(); 
 
         currentIndex = 0;
 
         for (int i = 0; i < noteImages.Length; i++)
         {
             noteImages[i].gameObject.SetActive(true);
-            noteImages[i].transform.localScale = new Vector3(2f, 5.5f, 1f);
+            noteImages[i].transform.localScale = defaultScale;
         }
     }
+
+
 }
