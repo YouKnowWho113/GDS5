@@ -9,7 +9,7 @@ public class NoteUIController : MonoBehaviour
 
     int currentIndex = 0;
 
-    Vector3 defaultScale = new Vector3(2f, 5.5f, 1f);
+    Vector3 defaultScale = new Vector3(1.8f, 5f, 1f);
     public void OnCorrectInput()
     {
         if (currentIndex < noteImages.Length)

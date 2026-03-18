@@ -14,6 +14,15 @@ public class MultiPhaseEnemy : MonoBehaviour
 
     public NewNoteUIController ui;
 
+    [Header("Phase 2 Push")]
+    public float pushDistance = 2f;
+    public float pushSpeed = 5f;
+
+    bool isPushing = false;
+    Vector3 targetPosition;
+    [Header("Movement")]
+    public float moveSpeed = 2f;
+
     void Start()
     {
         if (phase1Keys == null || phase1Keys.Length == 0)
@@ -53,7 +62,26 @@ public class MultiPhaseEnemy : MonoBehaviour
                 ui.OnFail();
             }
         }
+
+        if (isPushing)
+        {
+            float step = pushSpeed * Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, targetPosition, step);
+
+            if (Vector3.Distance(transform.position, targetPosition) < 0.01f)
+            {
+                isPushing = false;
+            }
+        }
+        else
+        {
+            
+            transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        }
+
+        
     }
+
     void CheckComplete()
     {
         if (currentIndex >= currentKeys.Length)
@@ -76,6 +104,8 @@ public class MultiPhaseEnemy : MonoBehaviour
         currentIndex = 0;
 
         ActivateNotes(currentKeys.Length);
+
+        StartPushBack(); 
     }
 
     void ActivateNotes(int count)
@@ -108,5 +138,11 @@ public class MultiPhaseEnemy : MonoBehaviour
                 ui.noteImages[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    void StartPushBack()
+    {
+        isPushing = true;
+        targetPosition = transform.position + Vector3.left * pushDistance;
     }
 }
