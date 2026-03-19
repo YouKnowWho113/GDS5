@@ -6,7 +6,7 @@ public class BossController : MonoBehaviour
 {
     [Header("Boss HP")]
     public int maxHP = 7;
-    int currentHP;
+    public int currentHP;
 
     [System.Serializable]
     public class Phase
@@ -21,6 +21,7 @@ public class BossController : MonoBehaviour
 
     public BossNoteInput input;
     public BossUIController ui;
+    public ShakeScreen screenShake;
 
     void Start()
     {
@@ -51,7 +52,6 @@ public class BossController : MonoBehaviour
         Debug.Log("Start Phase: " + (currentPhase + 1));
     }
 
-    // Called ONLY by SonicWave
     public void OnWaveHit()
     {
         TakeDamage(1);
@@ -75,9 +75,28 @@ public class BossController : MonoBehaviour
         }
     }
 
+
     public void OnPlayerFail()
     {
-        Debug.Log("Boss Attack Player!");
-        // later: reduce player HP
+       
+        if (screenShake != null)
+        {
+            screenShake.Shake();
+        }
+
+        StartCoroutine(FailRoutine());
+    }
+
+    IEnumerator FailRoutine()
+    {
+
+        ui.OnFail();
+
+
+        yield return new WaitForSeconds(0.2f);
+
+
+        ui.ResetUI();
+        StartPhase();
     }
 }

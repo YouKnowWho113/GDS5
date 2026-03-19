@@ -13,8 +13,12 @@ public class SonicWave : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("Hit something: " + other.name);
+
         if (other.CompareTag("Boss"))
         {
+            Debug.Log("HIT BOSS");
+
             BossController boss = other.GetComponent<BossController>();
 
             if (boss != null)

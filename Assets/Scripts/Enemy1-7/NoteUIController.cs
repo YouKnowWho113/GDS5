@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class NoteUIController : MonoBehaviour
 {
     public Image[] noteImages;
+    public ShakeScreen screenShake;
 
     int currentIndex = 0;
 
-    Vector3 defaultScale = new Vector3(1.8f, 5f, 1f);
+    Vector3 defaultScale = new Vector3(2f, 5.5f, 1f);
     public void OnCorrectInput()
     {
         if (currentIndex < noteImages.Length)
@@ -22,6 +23,10 @@ public class NoteUIController : MonoBehaviour
     public void OnFail()
     {
         currentIndex = 0;
+        if (screenShake != null)
+        {
+            screenShake.Shake();
+        }
 
         for (int i = 0; i < noteImages.Length; i++)
         {

@@ -12,6 +12,7 @@ public class BossNoteInput : MonoBehaviour
     public Transform spawnPoint;
 
     bool completed = false;
+    public BossUIController ui;
 
     public void SetPattern(KeyCode[] newPattern)
     {
@@ -30,6 +31,8 @@ public class BossNoteInput : MonoBehaviour
 
             if (Input.GetKeyDown(expected))
             {
+                ui.HideNoteAtIndex(index); 
+
                 index++;
 
                 if (index >= pattern.Length)
@@ -41,7 +44,7 @@ public class BossNoteInput : MonoBehaviour
             else
             {
                 index = 0;
-                boss.OnPlayerFail();
+                boss.OnPlayerFail(); 
             }
         }
     }

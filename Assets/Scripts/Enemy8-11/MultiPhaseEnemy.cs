@@ -20,6 +20,7 @@ public class MultiPhaseEnemy : MonoBehaviour
 
     bool isPushing = false;
     Vector3 targetPosition;
+
     [Header("Movement")]
     public float moveSpeed = 2f;
     public EnemyManager manager;
@@ -36,8 +37,6 @@ public class MultiPhaseEnemy : MonoBehaviour
         currentKeys = phase1Keys;
         currentIndex = 0;
 
-        Debug.Log("Enemy started, Phase 1");
-
         ActivateNotes(currentKeys.Length);
     }
 
@@ -46,9 +45,6 @@ public class MultiPhaseEnemy : MonoBehaviour
         if (Input.anyKeyDown)
         {
             KeyCode expectedKey = currentKeys[currentIndex];
-            Debug.Log("Key pressed");
-
-
 
             if (Input.GetKeyDown(expectedKey))
             {
@@ -59,11 +55,20 @@ public class MultiPhaseEnemy : MonoBehaviour
             }
             else
             {
+                
                 currentIndex = 0;
+
                 ui.OnFail();
+
+                ActivateNotes(currentKeys.Length); 
             }
         }
 
+        HandleMovement();
+    }
+
+    void HandleMovement()
+    {
         if (isPushing)
         {
             float step = pushSpeed * Time.deltaTime;
@@ -76,11 +81,8 @@ public class MultiPhaseEnemy : MonoBehaviour
         }
         else
         {
-            
             transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
         }
-
-        
     }
 
     void CheckComplete()
@@ -95,7 +97,6 @@ public class MultiPhaseEnemy : MonoBehaviour
             {
                 manager.OnObstacleCleared();
                 Destroy(gameObject);
-
             }
         }
     }
@@ -107,40 +108,14 @@ public class MultiPhaseEnemy : MonoBehaviour
         currentIndex = 0;
 
         ActivateNotes(currentKeys.Length);
-
-        StartPushBack(); 
+        StartPushBack();
     }
 
     void ActivateNotes(int count)
     {
-        if (count <= 0)
-        {
-            Debug.LogWarning("ActivateNotes called with 0 — ignored");
-            return;
-        }
+        if (count <= 0) return;
 
-        Debug.Log("ActivateNotes called. Count = " + count);
-
-        ui.ResetUI(); 
-
-
-        for (int i = 0; i < ui.noteImages.Length; i++)
-        {
-            if (i < count)
-            {
-                ui.noteImages[i].gameObject.SetActive(true);
-                ui.noteImages[i].transform.localScale = new Vector3(1.8f, 5f, 1f);
-                
-
-                Sprite s = ui.GetSpriteFromKey(currentKeys[i]);
-
-                ui.noteImages[i].sprite = s;
-            }
-            else
-            {
-                ui.noteImages[i].gameObject.SetActive(false);
-            }
-        }
+        ui.SetupNotes(currentKeys); 
     }
 
     void StartPushBack()

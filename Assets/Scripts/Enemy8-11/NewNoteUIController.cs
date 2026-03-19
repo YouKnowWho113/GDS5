@@ -7,94 +7,89 @@ public class NewNoteUIController : MonoBehaviour
 {
     public Image[] noteImages;
 
-    public int currentIndex = 0;
+    public Sprite A, S, D, F, G, H, J, K;
 
-
+    public float startX = 100f;
+    public float spacing = 150f;
 
     [SerializeField] Vector3 defaultScale = new Vector3(1.8f, 5f, 1f);
+    public ShakeScreen screenShake;
 
-    public Sprite spriteA;
-    public Sprite spriteS;
-    public Sprite spriteD;
-    public Sprite spriteF;
-    public Sprite spriteG;
-    public Sprite spriteH;
-    public Sprite spriteJ;
-    public Sprite spriteK;
+    
+    public void SetupNotes(KeyCode[] pattern)
+    {
+        ResetUI();
+        ArrangeNotes(pattern.Length);
 
+        for (int i = 0; i < noteImages.Length; i++)
+        {
+            if (i < pattern.Length)
+            {
+                noteImages[i].gameObject.SetActive(true);
+                noteImages[i].transform.localScale = defaultScale;
+                noteImages[i].sprite = GetSpriteFromKey(pattern[i]);
+            }
+            else
+            {
+                noteImages[i].gameObject.SetActive(false);
+            }
+        }
+    }
 
+    public void ArrangeNotes(int count)
+    {
+        for (int i = 0; i < noteImages.Length; i++)
+        {
+            if (i < count)
+            {
+                RectTransform rt = noteImages[i].rectTransform;
+
+                float x = startX + (i * spacing);
+                rt.anchoredPosition = new Vector2(x, 0f);
+            }
+        }
+    }
 
     public void HideNoteAtIndex(int index)
     {
         if (index >= 0 && index < noteImages.Length)
         {
-            StartCoroutine(HideNoteWithEffect(noteImages[index]));
+            noteImages[index].gameObject.SetActive(false);
         }
     }
 
+    public void ResetUI()
+    {
+        for (int i = 0; i < noteImages.Length; i++)
+        {
+            noteImages[i].sprite = null; 
+            noteImages[i].gameObject.SetActive(false);
+        }
+    }
 
     public void OnFail()
     {
-        StopAllCoroutines(); 
-
-        currentIndex = 0;
-
-        for (int i = 0; i < noteImages.Length; i++)
+        
+        ResetUI();
+        if (screenShake != null)
         {
-            noteImages[i].gameObject.SetActive(true);
-            noteImages[i].transform.localScale = defaultScale;
+            screenShake.Shake(); 
         }
-    }
-
-    public IEnumerator HideNoteWithEffect(Image note)
-    {
-        float duration = 0.15f;
-        float time = 0f;
-
-        Vector3 startScale = defaultScale;
-        note.transform.localScale = startScale;
-
-        while (time < duration)
-        {
-            time += Time.deltaTime;
-            float t = time / duration;
-
-            note.transform.localScale = Vector3.Lerp(startScale, Vector3.zero, t);
-
-            yield return null;
-        }
-
-        note.gameObject.SetActive(false);
     }
 
     public Sprite GetSpriteFromKey(KeyCode key)
     {
         switch (key)
         {
-            case KeyCode.A: return spriteA;
-            case KeyCode.S: return spriteS;
-            case KeyCode.D: return spriteD;
-            case KeyCode.F: return spriteF;
-            case KeyCode.G: return spriteG;
-            case KeyCode.H: return spriteH;
-            case KeyCode.J: return spriteJ;
-            case KeyCode.K: return spriteK;
-            default: return spriteA;
+            case KeyCode.A: return A;
+            case KeyCode.S: return S;
+            case KeyCode.D: return D;
+            case KeyCode.F: return F;
+            case KeyCode.G: return G;
+            case KeyCode.H: return H;
+            case KeyCode.J: return J;
+            case KeyCode.K: return K;
         }
+        return null;
     }
-
-    public void ResetUI()
-    {
-        StopAllCoroutines(); 
-
-        currentIndex = 0;
-
-        for (int i = 0; i < noteImages.Length; i++)
-        {
-            noteImages[i].gameObject.SetActive(true);
-            noteImages[i].transform.localScale = defaultScale;
-        }
-    }
-
-
 }
