@@ -2384,7 +2384,7 @@ MonoBehaviour:
   ui: {fileID: 133531981}
   pushDistance: -4
   pushSpeed: 8
-  moveSpeed: 5
+  moveSpeed: 4
   manager: {fileID: 1459381592}
 --- !u!114 &464278307
 MonoBehaviour:
@@ -12889,7 +12889,7 @@ MonoBehaviour:
   ui: {fileID: 1381925395}
   pushDistance: -4
   pushSpeed: 8
-  moveSpeed: 5
+  moveSpeed: 4
   manager: {fileID: 1459381592}
 --- !u!114 &1379948207
 MonoBehaviour:
@@ -16564,7 +16564,7 @@ MonoBehaviour:
   ui: {fileID: 1554726223}
   pushDistance: -4
   pushSpeed: 8
-  moveSpeed: 5
+  moveSpeed: 4
   manager: {fileID: 1459381592}
 --- !u!114 &1882776588
 MonoBehaviour:
@@ -17057,7 +17057,7 @@ MonoBehaviour:
   ui: {fileID: 1105714846}
   pushDistance: -4
   pushSpeed: 8
-  moveSpeed: 5
+  moveSpeed: 4
   manager: {fileID: 1459381592}
 --- !u!114 &1940321183
 MonoBehaviour:
