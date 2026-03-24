@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerHP : MonoBehaviour
 {
     public int maxHP = 5;
-    private int currentHP;
+    public int currentHP;
+    public int CurrentHP => currentHP;
 
     void Start()
     {

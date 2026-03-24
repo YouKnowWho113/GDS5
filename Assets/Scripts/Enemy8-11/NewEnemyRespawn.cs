@@ -6,6 +6,7 @@ public class NewEnemyRespawn : MonoBehaviour
 {
     private Vector3 startPosition;
     public NewNoteUIController ui;
+    public MultiPhaseEnemy enemy;
 
     void Start()
     {
@@ -17,7 +18,7 @@ public class NewEnemyRespawn : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Respawn();
-            ui.OnFail();
+            enemy.ResetState(); 
         }
     }
 

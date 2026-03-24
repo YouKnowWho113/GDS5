@@ -38,6 +38,8 @@ public class BossNoteInput : MonoBehaviour
                 if (index >= pattern.Length)
                 {
                     completed = true;
+
+                    boss.OnInputComplete(); 
                     SpawnWave();
                 }
             }
@@ -51,6 +53,7 @@ public class BossNoteInput : MonoBehaviour
 
     void SpawnWave()
     {
+        Debug.Log("Spawn at: " + spawnPoint.position);
         Instantiate(sonicWavePrefab, spawnPoint.position, Quaternion.identity);
     }
 }

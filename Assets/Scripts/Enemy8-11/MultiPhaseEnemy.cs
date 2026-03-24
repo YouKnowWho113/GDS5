@@ -123,4 +123,12 @@ public class MultiPhaseEnemy : MonoBehaviour
         isPushing = true;
         targetPosition = transform.position + Vector3.left * pushDistance;
     }
+
+    public void ResetState()
+    {
+        currentIndex = 0;
+
+        ui.OnFail(); 
+        ActivateNotes(currentKeys.Length); 
+    }
 }
