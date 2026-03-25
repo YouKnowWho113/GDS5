@@ -13,6 +13,7 @@ public class BossNoteInput : MonoBehaviour
 
     bool completed = false;
     public BossUIController ui;
+    public BossController bossController;
 
     public void SetPattern(KeyCode[] newPattern)
     {
@@ -23,6 +24,8 @@ public class BossNoteInput : MonoBehaviour
 
     void Update()
     {
+        if (Pause.GameIsPaused) return;
+        if (!bossController.timerRunning) return;
         if (pattern == null || completed) return;
 
         if (Input.anyKeyDown)

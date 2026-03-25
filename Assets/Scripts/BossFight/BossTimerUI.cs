@@ -13,7 +13,7 @@ public class BossTimerUI : MonoBehaviour
     {
         maxTime = time;
 
-        gameObject.SetActive(true); // show bar + BG
+        gameObject.SetActive(true); 
         fillImage.fillAmount = 1f;
     }
 
@@ -27,6 +27,6 @@ public class BossTimerUI : MonoBehaviour
 
     public void Hide()
     {
-        gameObject.SetActive(false); // hide whole bar
+        gameObject.SetActive(false); 
     }
 }

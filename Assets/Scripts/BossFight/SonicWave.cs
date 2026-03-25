@@ -5,6 +5,7 @@ using UnityEngine;
 public class SonicWave : MonoBehaviour
 {
     public float speed = 10f;
+    public EnemyManager manager;
 
     void Update()
     {
@@ -24,6 +25,24 @@ public class SonicWave : MonoBehaviour
             if (boss != null)
             {
                 boss.OnWaveHit();
+            }
+
+            Destroy(gameObject);
+        }
+
+        else if (other.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            manager.OnObstacleCleared();
+        }
+        else if (other.CompareTag("Enemy1"))
+        {
+            MultiPhaseEnemy enemy = other.GetComponent<MultiPhaseEnemy>();
+
+            if (enemy != null)
+            {
+                enemy.OnWaveHit();
             }
 
             Destroy(gameObject);

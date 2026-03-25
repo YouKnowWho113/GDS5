@@ -11,8 +11,11 @@ public class NoteCheck : MonoBehaviour
     public EnemyManager manager;
     public NoteUIController ui;
 
+    public GameObject sonicWavePrefab;
+    public Transform spawnPoint;
     void Update()
     {
+        if (Pause.GameIsPaused) return;
         if (Input.anyKeyDown)
         {
             KeyCode expectedKey = requiredKeys[currentIndex];
@@ -37,9 +40,10 @@ public class NoteCheck : MonoBehaviour
     {
         if (currentIndex >= requiredKeys.Length)
         {
-            manager.OnObstacleCleared();
             Debug.Log("Completed!");
-            Destroy(gameObject);
+
+            SpawnWave();
+           
         }
     }
 
@@ -49,4 +53,13 @@ public class NoteCheck : MonoBehaviour
         ui.OnFail();
         currentIndex = 0;
     }
+    void SpawnWave()
+    {
+        GameObject wave = Instantiate(sonicWavePrefab, spawnPoint.position, Quaternion.identity);
+
+        SonicWave sw = wave.GetComponent<SonicWave>();
+        sw.manager = manager; 
+    }
+    
+    
 }

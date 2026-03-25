@@ -29,10 +29,16 @@ public class BossController : MonoBehaviour
     [Header("Timer")]
     public float phaseTimeLimit = 3f;
     float currentTimer;
-    bool timerRunning = false;
+    public bool timerRunning = false;
 
     public PlayerHP player;
     public BossTimerUI timerUI;
+
+    public Animator animator;
+
+    public GameObject sonicWavePrefab;
+    public Transform spawnPoint;
+    bool isAttacking = false;
 
     void Start()
     {
@@ -109,7 +115,7 @@ public class BossController : MonoBehaviour
     {
         ui.OnFail();
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.6f);
 
         ui.ResetUI();
 
@@ -140,35 +146,60 @@ public class BossController : MonoBehaviour
         }
     }
 
+    IEnumerator AttackRoutine()
+    {
+        if (isAttacking) yield break;
+
+        isAttacking = true;
+
+        animator.SetBool("isAttacking", true);
+
+        yield return new WaitForSeconds(0.45f);
+
+        Instantiate(sonicWavePrefab, spawnPoint.position, Quaternion.identity);
+        
+
+        animator.SetBool("isAttacking", false);
+
+        isAttacking = false;
+    }
+
     void OnTimeOut()
     {
         Debug.Log("Time Out!");
 
-        //animation
-
-        player.TakeDamage(1);
-
-        StartCoroutine(TimeOutRoutine()); 
+        StartCoroutine(HandleTimeOut()); 
     }
 
-    IEnumerator TimeOutRoutine()
+    IEnumerator HandleTimeOut()
     {
         timerRunning = false;
         timerUI.Hide();
 
         ui.OnFail();
 
-        yield return new WaitForSeconds(0.2f);
+        
+        StartCoroutine(AttackRoutine());
 
+        
+        yield return new WaitForSeconds(0.1f); 
         ui.ResetUI();
 
-       
+        
+        yield return new WaitForSeconds(1f); 
+
         StartPhase();
     }
-
     public void OnInputComplete()
     {
         timerRunning = false;
         timerUI.Hide();
     }
+    public void SpawnWaveFromAnimation()
+    {
+        Debug.Log("Boss Spawn Wave!");
+
+        Instantiate(sonicWavePrefab, spawnPoint.position, Quaternion.identity);
+    }
+
 }

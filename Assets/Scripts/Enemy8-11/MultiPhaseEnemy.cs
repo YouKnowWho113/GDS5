@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class MultiPhaseEnemy : MonoBehaviour
 {
     public KeyCode[] phase1Keys;
@@ -25,6 +26,9 @@ public class MultiPhaseEnemy : MonoBehaviour
     public float moveSpeed = 2f;
     public EnemyManager manager;
 
+    public GameObject sonicWavePrefab;
+    public Transform spawnPoint;
+
     void Start()
     {
         if (phase1Keys == null || phase1Keys.Length == 0)
@@ -42,6 +46,7 @@ public class MultiPhaseEnemy : MonoBehaviour
 
     void Update()
     {
+        if (Pause.GameIsPaused) return;
         if (Input.anyKeyDown)
         {
             KeyCode expectedKey = currentKeys[currentIndex];
@@ -89,15 +94,7 @@ public class MultiPhaseEnemy : MonoBehaviour
     {
         if (currentIndex >= currentKeys.Length)
         {
-            if (currentPhase == 1)
-            {
-                StartPhase2();
-            }
-            else
-            {
-                manager.OnObstacleCleared();
-                Destroy(gameObject);
-            }
+            SpawnWave(); 
         }
     }
 
@@ -130,5 +127,25 @@ public class MultiPhaseEnemy : MonoBehaviour
 
         ui.OnFail(); 
         ActivateNotes(currentKeys.Length); 
+    }
+
+    public void OnWaveHit()
+    {
+        if (currentPhase == 1)
+        {
+            StartPhase2();
+        }
+        else
+        {
+            manager.OnObstacleCleared();
+            Destroy(gameObject);
+        }
+    }
+    void SpawnWave()
+    {
+        GameObject wave = Instantiate(sonicWavePrefab, spawnPoint.position, Quaternion.identity);
+
+        SonicWave sw = wave.GetComponent<SonicWave>();
+        sw.manager = manager; 
     }
 }

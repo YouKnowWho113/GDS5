@@ -9,6 +9,7 @@ public class ShakeScreen : MonoBehaviour
 
     Vector3 originalPos;
     float currentTime = 0f;
+    public Pause pauseMenu;
 
     void Start()
     {
@@ -22,6 +23,14 @@ public class ShakeScreen : MonoBehaviour
     }
     void Update()
     {
+        
+
+        if (Pause.GameIsPaused)
+        {
+            transform.localPosition = originalPos;
+            return;
+        }
+
         if (currentTime > 0)
         {
             float strength = currentTime / duration;
@@ -38,5 +47,10 @@ public class ShakeScreen : MonoBehaviour
                 transform.localPosition = originalPos; 
             }
         }
+    }
+    public void StopShake()
+    {
+        currentTime = 0f;
+        transform.localPosition = originalPos;
     }
 }

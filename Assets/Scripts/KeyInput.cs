@@ -15,6 +15,7 @@ public class KeyInput : MonoBehaviour
 
     void Update()
     {
+        if (Pause.GameIsPaused) return;
         currentSprite = rendererPool[currentIndex];
 
         if (Input.GetKey(key))
