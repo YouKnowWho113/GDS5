@@ -28,5 +28,6 @@ public class SonicWave : MonoBehaviour
 
             Destroy(gameObject);
         }
+
     }
 }
