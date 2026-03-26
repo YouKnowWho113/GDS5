@@ -6,7 +6,7 @@ public class NoteCheck : MonoBehaviour
 {
     public KeyCode[] requiredKeys;
     public bool destroyed;
-    bool completed = false;
+    //bool completed = false;
     int currentIndex = 0;
     public EnemyManager manager;
     public NoteUIController ui;

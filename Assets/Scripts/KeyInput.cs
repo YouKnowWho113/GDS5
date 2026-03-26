@@ -22,7 +22,7 @@ public class KeyInput : MonoBehaviour
         {
            
             currentIndex = 1;
-            Debug.Log("Pressed");
+            //Debug.Log("Pressed");
             
         }
         else currentIndex = 0;
