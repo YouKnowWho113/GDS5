@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEditor.SceneManagement;
 using UnityEngine.UI;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine.EventSystems;
@@ -40,10 +39,14 @@ public class Pause : MonoBehaviour
 
     public void Update()
     {
+        /*
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             BGMusic.instance.GetComponent<AudioSource>().Pause();
         }
+        */
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         StartCoroutine(FadeIn());
 
@@ -66,7 +69,10 @@ public class Pause : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         loading = false;
         yield return new WaitForSeconds(1f);
-        enemy1.SetActive(true);
+        if (enemy1 != null)
+        {
+            enemy1.SetActive(true);
+        }
     }
 
     void PauseGame()

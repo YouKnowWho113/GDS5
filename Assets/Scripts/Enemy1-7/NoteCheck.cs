@@ -16,14 +16,13 @@ public class NoteCheck : MonoBehaviour
     void Update()
     {
         if (Pause.GameIsPaused) return;
-        if (Input.anyKeyDown)
+        if (Input.anyKeyDown && currentIndex < requiredKeys.Length)
         {
             KeyCode expectedKey = requiredKeys[currentIndex];
 
             if (Input.GetKeyDown(expectedKey))
             {
                 Debug.Log("Correct: " + expectedKey);
-
                 currentIndex++;
                 ui.OnCorrectInput();
 

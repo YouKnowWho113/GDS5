@@ -23,7 +23,8 @@ public class ShakeScreen : MonoBehaviour
     }
     void Update()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
         if (Pause.GameIsPaused)
         {
