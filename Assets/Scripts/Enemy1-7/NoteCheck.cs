@@ -13,6 +13,16 @@ public class NoteCheck : MonoBehaviour
 
     public GameObject sonicWavePrefab;
     public Transform spawnPoint;
+    public AudioSource hurtAudio;
+
+    public SpriteRenderer sr;
+    public Color originalColor;
+
+    void Start()
+    {
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
+    }
     void Update()
     {
         if (Pause.GameIsPaused) return;
@@ -40,11 +50,13 @@ public class NoteCheck : MonoBehaviour
         if (currentIndex >= requiredKeys.Length)
         {
             Debug.Log("Completed!");
+            hurtAudio.Play();
 
             SpawnWave();
            
         }
     }
+    
 
     void FailSequence()
     {
@@ -59,6 +71,8 @@ public class NoteCheck : MonoBehaviour
         SonicWave sw = wave.GetComponent<SonicWave>();
         sw.manager = manager; 
     }
+
+    
     
     
 }

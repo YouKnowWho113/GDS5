@@ -7,6 +7,10 @@ public class EnemyManager : MonoBehaviour
     public GameObject[] obstacles;
     private int currentIndex = 0;
 
+    public AudioClip startSound;
+    public AudioClip bossSound;
+    public AudioSource audioSource;
+
     void Start()
     {
 
@@ -19,6 +23,9 @@ public class EnemyManager : MonoBehaviour
         if (obstacles.Length > 0)
         {
             obstacles[0].SetActive(true);
+            audioSource.clip = startSound;
+            audioSource.loop = true;
+            audioSource.Play();
         }
     }
 
@@ -28,13 +35,24 @@ public class EnemyManager : MonoBehaviour
 
         Debug.Log("Current Index: " + currentIndex);
 
+
         if (currentIndex < obstacles.Length)
         {
             obstacles[currentIndex].SetActive(true);
         }
+
         else
         {
             Debug.Log("cleared!");
+        }
+        if (currentIndex == 11)
+        {
+
+            audioSource.Stop();
+            audioSource.clip = bossSound;
+            audioSource.loop = true;
+            audioSource.Play();
+
         }
     }
 }

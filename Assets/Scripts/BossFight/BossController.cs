@@ -40,9 +40,18 @@ public class BossController : MonoBehaviour
     public Transform spawnPoint;
     bool isAttacking = false;
 
+    public SpriteRenderer sr;
+    public Color originalColor;
+
+    public AudioSource hurtAudio;
+
     void Start()
     {
         currentHP = maxHP;
+
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
+
         StartPhase();
     }
 
@@ -78,6 +87,7 @@ public class BossController : MonoBehaviour
     {
         timerRunning = false;
         timerUI.Hide(); 
+        hurtAudio.Play();   
 
         TakeDamage(1);
 
@@ -92,6 +102,7 @@ public class BossController : MonoBehaviour
     {
         currentHP -= dmg;
         Debug.Log("Boss HP: " + currentHP);
+        StartCoroutine(FlashRed());
 
         if (currentHP <= 0)
         {
@@ -200,6 +211,15 @@ public class BossController : MonoBehaviour
         Debug.Log("Boss Spawn Wave!");
 
         Instantiate(sonicWavePrefab, spawnPoint.position, Quaternion.identity);
+    }
+
+    IEnumerator FlashRed()
+    {
+        sr.color = Color.red;
+
+        yield return new WaitForSeconds(0.2f);
+
+        sr.color = originalColor;
     }
 
 }

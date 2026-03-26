@@ -8,6 +8,7 @@ TagManager:
   - Boss
   - Enemy1
   - Wave
+  - WavePlayer
   layers:
   - Default
   - TransparentFX

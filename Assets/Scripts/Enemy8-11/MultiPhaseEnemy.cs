@@ -28,9 +28,16 @@ public class MultiPhaseEnemy : MonoBehaviour
 
     public GameObject sonicWavePrefab;
     public Transform spawnPoint;
+    public AudioSource hurtAudio;
+    public SpriteRenderer sr;
+    public Color originalColor;
+
 
     void Start()
     {
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
+
         if (phase1Keys == null || phase1Keys.Length == 0)
         {
             Debug.LogError("Phase1Keys NOT SET!");
@@ -131,6 +138,8 @@ public class MultiPhaseEnemy : MonoBehaviour
 
     public void OnWaveHit()
     {
+        hurtAudio.Play();
+        StartCoroutine(FlashRed());
         if (currentPhase == 1)
         {
             StartPhase2();
@@ -147,5 +156,14 @@ public class MultiPhaseEnemy : MonoBehaviour
 
         SonicWave sw = wave.GetComponent<SonicWave>();
         sw.manager = manager; 
+    }
+
+    IEnumerator FlashRed()
+    {
+        sr.color = Color.red;
+
+        yield return new WaitForSeconds(0.2f);
+
+        sr.color = originalColor;
     }
 }

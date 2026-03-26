@@ -13,10 +13,16 @@ public class PlayerHP : MonoBehaviour
 
     public float invincibleTime = 2f;
     bool isInvincible = false;
+    public SpriteRenderer sr;
+    public Color originalColor;
 
     void Start()
     {
         currentHP = maxHP;
+
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
+
     }
 
     public void TakeDamage(int amount)
@@ -25,6 +31,7 @@ public class PlayerHP : MonoBehaviour
 
         currentHP -= amount;
         Debug.Log("Player HP: " + currentHP);
+        StartCoroutine(FlashRed());
 
         if (screenShake != null)
         {
@@ -44,6 +51,7 @@ public class PlayerHP : MonoBehaviour
         
         if (other.CompareTag("Wave"))
         {
+            
             TakeDamage(1);
         }
     }
@@ -62,5 +70,14 @@ public class PlayerHP : MonoBehaviour
         SceneManager.LoadScene("Defeat");
         Debug.Log("Player Dead!");
         
+    }
+
+    IEnumerator FlashRed()
+    {
+        sr.color = Color.red;
+
+        yield return new WaitForSeconds(0.2f);
+
+        sr.color = originalColor;
     }
 }

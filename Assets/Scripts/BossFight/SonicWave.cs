@@ -6,6 +6,7 @@ public class SonicWave : MonoBehaviour
 {
     public float speed = 10f;
     public EnemyManager manager;
+    
 
     void Update()
     {
@@ -24,6 +25,7 @@ public class SonicWave : MonoBehaviour
 
             if (boss != null)
             {
+                
                 boss.OnWaveHit();
             }
 
@@ -32,7 +34,10 @@ public class SonicWave : MonoBehaviour
 
         else if (other.CompareTag("Enemy"))
         {
+            
+
             Destroy(other.gameObject);
+            
             Destroy(gameObject);
             manager.OnObstacleCleared();
         }
@@ -42,6 +47,7 @@ public class SonicWave : MonoBehaviour
 
             if (enemy != null)
             {
+                
                 enemy.OnWaveHit();
             }
 
@@ -49,4 +55,6 @@ public class SonicWave : MonoBehaviour
         }
 
     }
+
+
 }
