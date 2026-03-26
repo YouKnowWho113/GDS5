@@ -40,6 +40,11 @@ public class Pause : MonoBehaviour
 
     public void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            BGMusic.instance.GetComponent<AudioSource>().Pause();
+        }
+
         StartCoroutine(FadeIn());
 
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Alpha1) && !isResuming)

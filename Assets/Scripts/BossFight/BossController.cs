@@ -97,7 +97,7 @@ public class BossController : MonoBehaviour
         {
             Debug.Log("Boss Dead");
             Destroy(gameObject);
-            SceneManager.LoadScene("Main Menu");
+            SceneManager.LoadScene("Victory");
         }
     }
 

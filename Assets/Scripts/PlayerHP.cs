@@ -59,7 +59,7 @@ public class PlayerHP : MonoBehaviour
 
     void Die()
     {
-        SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene("Defeat");
         Debug.Log("Player Dead!");
         
     }

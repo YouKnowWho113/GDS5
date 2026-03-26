@@ -24,6 +24,11 @@ public class GameMenu : MonoBehaviour
     
     public void Update()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            BGMusic.instance.GetComponent<AudioSource>().Pause();
+        }
+
         if (Input.anyKeyDown)
         {
             KeyCode startKey = startKeys[startIndex];
