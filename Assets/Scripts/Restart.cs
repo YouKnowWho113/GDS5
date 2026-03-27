@@ -29,47 +29,75 @@ public class Restart : MonoBehaviour
 
         StartCoroutine(FadeIn());
 
-        if (Input.anyKeyDown)
+        if (!loading)
         {
-
-            KeyCode yesKey = yesKeys[yesIndex];
-            KeyCode restartKey = restartKeys[restartIndex];
-            KeyCode menuKey = menuKeys[menuIndex];
-
-            if (Input.GetKeyDown(yesKey) && yesKeys.Length > 1)
+            if (Input.anyKeyDown)
             {
-                Debug.Log("Correct: " + yesKey);
 
-                OnYesInput();
+                KeyCode yesKey = yesKeys[yesIndex];
+                KeyCode restartKey = restartKeys[restartIndex];
+                KeyCode menuKey = menuKeys[menuIndex];
 
-                StartCoroutine(Resume());
-            }
+                if (Input.GetKeyDown(yesKey) && yesKeys.Length > 1)
+                {
+                    Debug.Log("Correct: " + yesKey);
 
-            else if (Input.GetKeyDown(restartKey) && restartKeys.Length > 1)
-            {
-                Debug.Log("Correct: " + restartKey);
+                    OnYesInput();
 
-                OnRestartInput();
+                    if (restartIndex != 0 || menuIndex != 0)
+                    {
+                        FailRestart();
+                        FailMenu();
+                        restartIndex = 0;
+                        menuIndex = 0;
+                    }
 
-                StartCoroutine(CheckRestart());
-            }
+                    StartCoroutine(Resume());
+                }
 
-            else if (Input.GetKeyDown(menuKey) && menuKeys.Length > 1)
-            {
-                Debug.Log("Correct: " + menuKey);
+                else if (Input.GetKeyDown(restartKey) && restartKeys.Length > 1)
+                {
+                    Debug.Log("Correct: " + restartKey);
 
-                OnMenuInput();
+                    OnRestartInput();
 
-                StartCoroutine(GoToMenu());
-            }
-            else
-            {
-                FailYes();
-                FailRestart();
-                FailMenu();
-                yesIndex = 0;
-                restartIndex = 0;
-                menuIndex = 0;
+                    if (yesIndex != 0 || menuIndex != 0)
+                    {
+                        FailYes();
+                        FailMenu();
+                        yesIndex = 0;
+                        menuIndex = 0;
+                    }
+
+                    StartCoroutine(CheckRestart());
+                }
+
+                else if (Input.GetKeyDown(menuKey) && menuKeys.Length > 1)
+                {
+                    Debug.Log("Correct: " + menuKey);
+
+                    OnMenuInput();
+
+                    if (yesIndex != 0 || restartIndex != 0)
+                    {
+                        FailYes();
+                        FailRestart();
+                        yesIndex = 0;
+                        restartIndex = 0;
+                    }
+
+                    StartCoroutine(GoToMenu());
+                }
+
+                else
+                {
+                    FailYes();
+                    FailRestart();
+                    FailMenu();
+                    yesIndex = 0;
+                    restartIndex = 0;
+                    menuIndex = 0;
+                }
             }
         }
     }

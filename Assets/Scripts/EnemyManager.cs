@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour
 
     public AudioClip startSound;
     public AudioClip bossSound;
-    public AudioSource audioSource;
+    public AudioSource audioSource = null;
 
     void Start()
     {
